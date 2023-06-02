@@ -33,11 +33,13 @@
         index++;
         if (index >= html.length) {
           clearInterval(typingInterval);
+          enableButton();
         }
       }, speed);
     }
 
     function sendRequest() {
+      disableButton()
       const userInput = document.getElementById('user-input').value;
       if (userInput.trim() === '') return;
       
@@ -71,6 +73,22 @@
         sendRequest();
       });
     });
+
+    function disableButton() {
+      const sendButton = document.getElementById('send-button');
+      sendButton.disabled = true;
+      sendButton.textContent = 'Loading...';
+    }
+
+    function enableButton() {
+      const sendButton = document.getElementById('send-button');
+      sendButton.disabled = false;
+      sendButton.textContent = 'Send Message';
+    }
+
+
   </script>
 </body>
 </html>
+
+
