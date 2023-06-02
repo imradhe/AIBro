@@ -1,3 +1,4 @@
+<?php locked(); ?>
 <!DOCTYPE html>
 <html>
 <head>
