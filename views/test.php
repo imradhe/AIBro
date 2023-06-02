@@ -7,20 +7,20 @@
       border: 1px solid #ccc;
       padding: 10px;
       white-space: pre-wrap !important;
-      max-width: 20vw;
-      max-height: 300px;
-      overflow-y: scroll;
     }
     .message {
       margin-bottom: 10px;
+    }
+    textarea{
+      min-width: 100%;
     }
   </style>
 </head>
 <body>
   <div class="chat-container">
-    <div class="message">User: <textarea type="text" id="user-input"></textarea></div>
     <div class="message">AI Bro: <span id="typing"></span></div>
   </div>
+  <textarea type="text" id="user-input"></textarea>
   <button id="send-button">Send Message</button>
 
   <script>
