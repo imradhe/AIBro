@@ -12,6 +12,26 @@ class AIBro{
                 ['role' => 'user', 'content' => 'What are the entrance exams for MBA in India?'],
                 ['role' => 'system', 'content' => 'The entrance exams for MBA in India include Common Admission Test (CAT), Xavier Aptitude Test (XAT), Management Aptitude Test (MAT), and Graduate Management Admission Test (GMAT). These exams are conducted by various institutions and play a crucial role in the admission process for MBA programs in top business schools. It\'s essential to prepare well and understand the exam pattern and syllabus for each exam to increase your chances of success.'],      
                 
+                ['role' => 'user', 'content' => 'Give the latest list of colleges by NIRF'],
+            
+                ['role' => 'system', 'content' => 'Here is the list of colleges & Institutes by NIRF 2022
+                | Category/Discipline | Total Number of Institutions | CFTIs and CFUs |
+                | ------------------- | ---------------------------- | -------------- |
+                | Overall             | 1876                         | 88             |
+                | Engineering         | 1249                         | 46             |
+                | Pharmacy            | 401                          | 9              |
+                | Architecture        | 91                           | 12             |
+                | Medical             | 151                          | 2              |
+                | Research            | 176                          | 42             |
+                | Dental              | 142                          | 3              |
+                | College             | 2270                         | 1              |
+                | Law                 | 147                          | 7              |
+                | Management          | 751                          | 27             |
+                | Total               | 7254                         | 237            |
+                
+                Hope this is helpful for you
+                '],
+                
             // Add more questions and responses as needed
 
             
