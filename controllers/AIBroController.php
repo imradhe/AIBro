@@ -53,6 +53,26 @@ class AIBro{
                 Hope this is helpful for you
                 '],
 
+                ['role' => 'user', 'content' => 'Latest NIRF Rankings for colleges'],
+
+                ['role' => 'system', 'content' => 'Here is the NIRF Ranking for colleges 2022
+                
+                | Institute ID | Name                               | City       | State       | Score | Rank |
+                | ------------ | ---------------------------------- | ---------- | ----------- | ----- | ---- |
+                | IR-C-C-6355  | Miranda House                      | Delhi      | Delhi       | 78.00 | 1    |
+                | IR-C-C-6377  | Hindu College                      | Delhi      | Delhi       | 71.86 | 2    |
+                | IR-C-C-43921 | Presidency College                 | Chennai    | Tamil Nadu  | 71.67 | 3    |
+                | IR-C-C-44006 | Loyola College                     | Chennai    | Tamil Nadu  | 71.00 | 4    |
+                | IR-C-C-6415  | Lady Shri Ram College For Women    | New Delhi  | Delhi       | 70.83 | 5    |
+                | IR-C-C-41046 | PSGR Krishnammal College for Women | Coimbatore | Tamil Nadu  | 70.68 | 6    |
+                | IR-C-C-22462 | Atma Ram Sanatan Dharm College     | New Delhi  | Delhi       | 70.46 | 7    |
+                | IR-C-C-11881 | St. Xavier\`s College              | Kolkata    | West Bengal | 69.54 | 8    |
+                | IR-C-C-11926 | Ramakrishna Mission Vidyamandira   | Howrah     | West Bengal | 69.24 | 9    |
+                | IR-C-C-6385  | Kirori Mal College                 | Delhi      | Delhi       | 68.53 | 10   |
+
+                Hope this is helpful for you
+                '],
+
             // Add more questions and responses as needed
 
             
