@@ -73,6 +73,48 @@ class AIBro{
                 Hope this is helpful for you
                 '],
 
+                
+                ['role' => 'user', 'content' => 'Latest NIRF Rankings for Engineering Colleges'],
+
+                ['role' => 'system', 'content' => 'Here is the NIRF Ranking for Engineering colleges 2022
+
+                | Institute ID | Name                                                  | City            | State         | Score | Rank |
+                | ------------ | ----------------------------------------------------- | --------------- | ------------- | ----- | ---- |
+                | IR-E-U-0456  | Indian Institute of Technology Madras                 | Chennai         | Tamil Nadu    | 90.04 | 1    |
+                | IR-E-I-1074  | Indian Institute of Technology, Delhi                 | New Delhi       | Delhi         | 88.12 | 2    |
+                | IR-E-U-0306  | Indian Institute of Technology, Bombay                | Mumbai          | Maharashtra   | 83.96 | 3    |
+                | IR-E-I-1075  | Indian Institute of Technology Kanpur                 | Kanpur          | Uttar Pradesh | 82.56 | 4    |
+                | IR-E-U-0573  | Indian Institute of Technology, Kharagpur             | Kharagpur       | West Bengal   | 78.89 | 5    |
+                | IR-E-U-0560  | Indian Institute of Technology, Roorkee               | Roorkee         | Uttarakhand   | 76.70 | 6    |
+                | IR-E-U-0053  | Indian Institute of Technology Guwahati               | Guwahati        | Assam         | 72.98 | 7    |
+                | IR-E-U-0467  | National Institute of Technology, Tiruchirappalli     | Tiruchirappalli | Tamil Nadu    | 69.17 | 8    |
+                | IR-E-U-0013  | Indian Institute of Technology Hyderabad              | Hyderabad       | Telangana     | 68.03 | 9    |
+                | IR-E-U-0237  | National Institute of Technology Karnataka, Surathkal | Surathkal       | Karnataka     | 66.04 | 10   |
+
+                Hope this is helpful for you
+                '],
+
+                ['role' => 'user', 'content' => 'Latest NIRF Rankings for Medical Colleges'],
+
+                ['role' => 'system', 'content' => 'Here is the NIRF Ranking for Medical colleges 2022
+
+                | Institute ID | Name                                                                                  | City               | State         | Score | Rank |
+                | ------------ | ------------------------------------------------------------------------------------- | ------------------ | ------------- | ----- | ---- |
+                | IR-D-N-15    | All India Institute of Medical Sciences, Delhi                                        | New Delhi          | Delhi         | 91.60 | 1    |
+                | IR-D-U-0079  | Post Graduate Institute of Medical Education and Research                             | Chandigarh         | Chandigarh    | 79.00 | 2    |
+                | IR-D-C-45654 | Christian Medical College                                                             | Vellore            | Tamil Nadu    | 72.84 | 3    |
+                | IR-D-U-0236  | National Institute of Mental Health & Neuro Sciences, Bangalore                       | Bangalore          | Karnataka     | 71.56 | 4    |
+                | IR-D-U-0500  | Banaras Hindu University                                                              | Varanasi           | Uttar Pradesh | 68.12 | 5    |
+                | IR-D-U-0368  | Jawaharlal Institute of Post Graduate Medical Education & Research                    | Puducherry         | Pondicherry   | 67.64 | 6    |
+                | IR-D-N-33    | Sanjay Gandhi Postgraduate Institute of Medical Sciences                              | Lucknow            | Uttar Pradesh | 67.18 | 7    |
+                | IR-D-U-0436  | Amrita Vishwa Vidyapeetham                                                            | Coimbatore         | Tamil Nadu    | 66.49 | 8    |
+                | IR-D-U-0266  | Sree Chitra Tirunal Institute for Medical Sciences and Technology, Thiruvananthapuram | Thiruvananthapuram | Kerala        | 65.17 | 9    |
+                | IR-D-C-7242  | Kasturba Medical College, Manipal                                                     | Manipal            | Karnataka     | 63.89 | 10   |
+
+
+                Hope this is helpful for you
+                '],
+
             // Add more questions and responses as needed
 
             
