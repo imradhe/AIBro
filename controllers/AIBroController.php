@@ -32,6 +32,27 @@ class AIBro{
                 Hope this is helpful for you
                 '],
                 
+                
+                ['role' => 'user', 'content' => 'Latest NIRF Rankings for universities'],
+
+                ['role' => 'system', 'content' => 'Here is the NIRF Ranking for universities 2022
+                
+                | Institute ID | Name                                         | City       | State         | Score | Rank |
+                | ------------ | -------------------------------------------- | ---------- | ------------- | ----- | ---- |
+                | IR-O-U-0220  | Indian Institute of Science                  | Bengaluru  | Karnataka     | 83.57 | 1    |
+                | IR-O-U-0109  | Jawaharlal Nehru University                  | New Delhi  | Delhi         | 68.47 | 2    |
+                | IR-O-U-0108  | Jamia Millia Islamia, New Delhi              | New Delhi  | Delhi         | 65.91 | 3    |
+                | IR-O-U-0575  | Jadavpur University                          | Kolkata    | West Bengal   | 65.37 | 4    |
+                | IR-O-U-0436  | Amrita Vishwa Vidyapeetham<br>               | Coimbatore | Tamil Nadu    | 63.40 | 5    |
+                | IR-O-U-0500  | Banaras Hindu University                     | Varanasi   | Uttar Pradesh | 63.20 | 6    |
+                | IR-O-U-0234  | Manipal Academy of Higher Education, Manipal | Manipal    | Karnataka     | 62.84 | 7    |
+                | IR-O-U-0570  | Calcutta University                          | Kolkata    | West Bengal   | 62.23 | 8    |
+                | IR-O-U-0490  | Vellore Institute of Technology              | Vellore    | Tamil Nadu    | 61.77 | 9    |
+                | IR-O-U-0042  | University of Hyderabad                      | Hyderabad  | Telangana     | 61.71 | 10   |
+
+                Hope this is helpful for you
+                '],
+
             // Add more questions and responses as needed
 
             
