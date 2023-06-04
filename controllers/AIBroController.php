@@ -24,7 +24,8 @@ class AIBro{
         $requestData = [
             'model' => 'gpt-3.5-turbo-0301',
             'messages' => $messages,
-            'temperature' => 0.1
+            'temperature' => 0.1,
+            'max_tokens' => 400
         ];
         
         require('config.php');
