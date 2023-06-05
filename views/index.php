@@ -64,6 +64,7 @@
     <script>
 
       async function sendRequest(promptValue){
+
         let url = '<?php echo route('api/aibro') ?>'
         let data = new FormData()
         data.append('message', promptValue)
@@ -105,4 +106,4 @@
     
       </script>
   </body>
-</html>
+</html> 
