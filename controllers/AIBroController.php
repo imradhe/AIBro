@@ -3,7 +3,7 @@ class AIBro
 {
     public static function response($message)
     {
-        $messages = [
+        $messages = [ 
 
             [
                 'role' => 'user',
