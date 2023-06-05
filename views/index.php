@@ -1,126 +1,190 @@
-<?php locked(['user', 'moderator', 'admin']); ?>
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+    .clear {
+      position: fixed;
+      bottom: 20px;
+      left: calc(
+        12% - 60px
+      ); /* Position the clear button 60px to the left of the prompt field */
+      z-index: 1; /* Ensure the clear button appears above the prompt field */
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Bro - AI Chat Assistant for Career Guidance & College Counseling</title>
+    .prompt {
+      position: fixed;
+      bottom: 20px;
+      max-width: 80vw;
+      margin-left: 12%;
+      height: 50px;
+      min-height: 50px;
+      max-height: 100px;
+      resize: none;
+    }
+    .send {
+      position: fixed;
+      bottom: 25px;
+      right: calc(8% + 10px);
+      transform: rotate(45deg);
+    }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <style>
-        .chat-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
+    .examples button {
+      font-size: 14px;
+    }
 
-        #typing {
-            white-space: pre-wrap !important;
-        }
+    .conversations {
+      margin-bottom: 200px;
+    }
 
-        .message {
-            margin-bottom: 10px;
-        }
+    .conversation .role {
+      font-size: 14px;
+    }
+    .conversation .message {
+      border-radius: 10px;
+      padding: 2%;
+      white-space: pre-wrap;
+    }
 
-        textarea {
-            min-width: 100%;
-        }
+    .bg-ai {
+      background-color: #5454541f;
+    }
+    .bg-you {
+      background-color: #a6a6a68f;
+      color: #000;
+    }
+    @media screen and (max-width: 440px) {
+      /* Adjust the positioning for smaller screens */
+      .clear {
+        left: 10px;
+      }
 
-        .history-container {
-            white-space: pre-wrap !important;
-            margin-bottom: 20px;
-        }
+      .prompt {
+        max-width: 80vw;
+        margin-left: 16%;
+      }
 
-        .chat-input-container {
-            position: relative;
-        }
+      .send {
+        right: calc(5% + 10px);
+      }
+    }
 
-        .send-button {
-            position: absolute;
-            right: 10px;
-            bottom: 15px;
-        }
+    @media screen and (max-width: 380px) {
+      /* Adjust the positioning for extra smaller screens */
+      .prompt {
+        max-width: 72vw;
+        margin-left: 24%;
+      }
 
-        textarea {
-            min-height: 65px !important;
-            max-height: 150px;
-        }
-    </style>
-</head>
+      .send {
+        right: calc(4% + 10px);
+      }
+    }
+  </style>
+  <?php include("views/partials/head.php"); ?>
 
-<body>
+  <body>
+    <?php include("views/partials/nav.php"); ?>
+
     <div class="container">
-        <?php include('views/partials/nav.php'); ?>
-        <div class="history-container">
-            <div id="history-list"></div>
-            <button id="reset-button" class="btn btn-danger">Clear Conversations</button>
-        </div>
-        <div class="chat-container">
-            <div class="message"><b>AI Bro:</b> <span id="typing"></span></div>
-            <div class="info"></div>
-        </div>
+      <div class="mt-5 logo text-center">
+        <img
+          src="https://placehold.co/120"
+          alt="AI Bro Logo"
+          class="img-fluid my-2 mt-5"
+        />
+        <h4>
+          Your AI Assistant for Career Guidance <br />
+          & College Counseling
+        </h4>
+      </div>
 
-        <div class="chat-input-container">
-            <textarea type="text" id="user-input" class="form-control"></textarea>
-            <button id="send-button" class="btn btn-primary send-button"><i class="bi bi-send-fill"></i></button>
+      <div class="examples text-center mt-5">
+        <h5 class="text-secondary pt-5">Try asking about</h5>
+
+        <div class="d-flex flex-column align-items-center">
+          <button class="btn btn-outline-secondary rounded-pill my-2">
+            "Top 10 IITs for Computer Science" →
+          </button>
+          <button class="btn btn-outline-secondary rounded-pill my-2">
+            "Preparation strategy for JEE Mains" →
+          </button>
+          <button class="btn btn-outline-secondary rounded-pill my-2">
+            "Rank Prediction for JEE Mains" →
+          </button>
         </div>
+      </div>
+
+      <div class="conversations mt-5 pb-5">
+        <div class="conversation mb-5">
+          <div class="ai text-secondary">AI Bro</div>
+          <div class="message bg-ai"></div>
+        </div>
+      </div>
     </div>
 
+    <button class="btn btn-primary rounded-circle clear ms-2" id="clear">
+      <i class="bi bi-eraser-fill fs-5"></i>
+    </button>
+
+    <textarea
+      name="prompt"
+      id="prompt"
+      class="form-control prompt rounded-pill ps-4 pt-3"
+      placeholder="Send a message"
+    ></textarea>
+    <button id="send" class="btn btn-transparent send">
+      <i class="bi bi-send-fill"></i>
+    </button>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="<?php assets('js/app.js') ?>"></script>
-
+    <script src="<?php assets('js/app.js');?>"></script>
     <script>
-        async function sendRequest() {
-            disableButton();
-            let userInput = document.getElementById('user-input').value;
-            if (userInput.trim() == '') return enableButton();
+
+      async function sendRequest(promptValue){
+        let url = '<?php echo route('api/aibro') ?>'
+        let data = new FormData()
+        data.append('message', promptValue)
+        data.append('count', count())
+        data.append('tokens', tokenCount())
 
 
-            let url = '<?php echo route('api/aibro') ?>';
-            let data = new FormData();
-            data.append('message', userInput);
-            data.append('count', count());
-            data.append('tokens', tokenCount());
-            try {
+        try {
+                  let response = await axios.post(url, data)
 
+                  if (response.status === 200) {
+                      let responseData = response.data
 
-                let response = await axios.post(url, data);
-                if (response.status === 200) {
-                    let responseData = response.data;
-                    if (responseData.status === '200' && responseData.message == "Success") {
-                        let aiResponse = responseData.data.response;
-                        aiResponse = aiResponse.replace(/<br\s*[\/]?>/gi, "\n");
-                        let typingSpeed = 10; // Adjust typing speed (milliseconds per character)
-                        let id = responseData.data[0].id;
-                        let total_tokens = responseData.data[0].usage.total_tokens;
-                        let finish_reason = responseData.data[0].choices[0].finish_reason;
-                        let time = responseData.data[0].created;
+                      if (responseData.status === '200' && responseData.message === 'Success') {
+                          let aiResponse = responseData.data.response.replace(/<br\s*[\/]?>/gi, '\n')
+                          let id = responseData.data[0].id
+                          let total_tokens = responseData.data[0].usage.total_tokens
+                          let finish_reason = responseData.data[0].choices[0].finish_reason
+                          let time = responseData.data[0].created
 
-                        typeHTML(aiResponse, typingSpeed);
+                          return {
+                          promptValue: promptValue,
+                          id: id,
+                          total_tokens: total_tokens,
+                          finish_reason: finish_reason,
+                          time: time,
+                          aiResponse: aiResponse
+                        }
 
-                        renderChatHistory();
-                        saveToLocalStorage(userInput, id, total_tokens, finish_reason, time, aiResponse);
-
-                        userInput = document.querySelector('#user-input');
-                        userInput.value = '';
-                        userInput.focus();
-                    }
-                    else {
-                        typeHTML(response.data.data, 10);
-                        enableButton()
-                    }
-
-                }
-
-
-            } catch (error) {
-                console.log('Error: ' + error);
-            }
-        }
-    </script>
-</body>
-
+                      } else {
+                        return false
+                      }
+                  }
+              } catch (error) {
+                  console.log('Error: ' + error)
+                  return false
+              }
+      }
+    
+      </script>
+  </body>
 </html>
