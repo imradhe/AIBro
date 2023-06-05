@@ -1,10 +1,7 @@
-@font-face {
-    font-family: Graphene;
-    src: url(../fonts/Graphene.otf) format("truetype");
-}
+
 
 * {
-    font-family: Graphene !important;
+    font-family: "Poppins";
     box-sizing: border-box;
     margin: 0;
     padding: 0;
