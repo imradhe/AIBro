@@ -32,7 +32,7 @@
                             <a class="nav-link" aria-current="page" href="<?php echo route('login') . "?back=" . url(); ?>">Login</a>
                         <?php } ?>
                     </li>
-                </ul>
+                </ul> 
             <?php } ?>
         </div>
     </div>
