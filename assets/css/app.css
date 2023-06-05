@@ -38,7 +38,7 @@ img{
     background-color: rgba(173, 220, 203, .3);
     border: 2px solid #ADDCCB;
     color: #000;
-}
+} 
 
 .navbar *{
     user-select: none !important;
