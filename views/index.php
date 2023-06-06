@@ -47,7 +47,7 @@
       name="prompt"
       id="prompt"
       class="form-control prompt rounded-pill ps-4 pt-3"
-      placeholder="Send a message"
+      placeholder="Type your message here"
     ></textarea>
     <button id="send" class="btn btn-transparent send">
       <i class="bi bi-send-fill"></i>
