@@ -2,6 +2,7 @@ const prompt = document.querySelector("#prompt")
 const clear = document.querySelector("#clear")
 const send = document.querySelector("#send")
 const conversations = document.querySelector(".conversations")
+const examples = document.querySelector(".examples")
 const allConversations = document.querySelector(".conversation")
 let lastConversation = document.querySelector(
   ".conversations .conversation:last-child .message"
@@ -50,6 +51,7 @@ function typeHTML(html, speed) {
 }
 
 function greetings() {
+  disable()
   let greeting =
     "Hello! I am AI Bro, an AI chat assistant for career guidance and college counseling. \n\nHow may I help you today?"
   typeHTML(greeting, 10)
@@ -99,6 +101,7 @@ function render() {
   conversations.innerHTML = html
 
   if (conversations.innerHTML === "") {
+    examples.style.display ="block"
     conversations.innerHTML += `
       <div class="conversation mb-5">
         <div class="ai text-secondary">AI Bro</div>
@@ -106,7 +109,7 @@ function render() {
       </div>
       `
     if (greetings()) enable()
-  }
+  } else examples.style.display ="none"
   
 
   lastConversation = document.querySelector(
@@ -130,20 +133,23 @@ function reset() {
 
 function clearConversations() {
   conversations.innerHTML = ""
-  disable()
   let getConversations = JSON.parse(localStorage.getItem("conversations"))
-  //console.log(getConversations)
-  getConversations.forEach(conversation=> {
-    conversation.removed = true
-    console.log(conversation)
-  })
-  localStorage.setItem("conversations", JSON.stringify(getConversations))
+  
+  if(getConversations){
+    conversations.innerHTML = ''
+    getConversations.forEach(conversation=> {
+      conversation.removed = true
+      console.log(conversation)
+    })
+    localStorage.setItem("conversations", JSON.stringify(getConversations))
+  }
   conversations.innerHTML += `
     <div class="conversation mb-5">
       <div class="ai text-secondary">AI Bro</div>
       <div class="message bg-ai"></div>
     </div>
     `
+    examples.style.display ="block"
   if (greetings()) enable()
 }
 
