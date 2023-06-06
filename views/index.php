@@ -37,13 +37,7 @@
         </div>
       </div>
 
-      <div class="conversations mt-5 pb-5">
-        <div class="conversation mb-5">
-          <div class="ai text-secondary">AI Bro</div>
-          <div class="message bg-ai"></div>
-        </div>
-      </div>
-    </div>
+      <div class="conversations mt-5 pb-5"></div>
 
     <button class="btn btn-primary rounded-circle clear ms-2" id="clear">
       <i class="bi bi-eraser-fill fs-5"></i>
@@ -70,7 +64,7 @@
         data.append('message', promptValue)
         data.append('count', count())
         data.append('tokens', tokenCount())
-
+        examples.style.display ="none"
 
         try {
                   let response = await axios.post(url, data)
