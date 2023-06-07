@@ -45,7 +45,7 @@ class Migrator
 
                 // Execute the SQL query
                 DB::execute($sql);
-                array_push($output, "Migrating table: $table");
+                array_push($output, "Migrated table: $table");
             }
         }
 
