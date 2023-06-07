@@ -28,7 +28,7 @@
     <meta property="og:site_name" content="<?php echo $config['APP_NAME']; ?>"/>
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=cyrillic&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poppins&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 
 
 
