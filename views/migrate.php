@@ -4,6 +4,7 @@
 $tables = [
     'users' => 'auth/users.sql',
     'logs' => 'auth/logs.sql',
+    'aibro' => 'aibro.sql',
     // Add more tables as needed
 ];
 
