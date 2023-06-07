@@ -1,0 +1,112 @@
+
+      
+    * {
+        font-family: "Poppins";
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .btn:focus {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+      
+      img {
+        user-select: none !important;
+        pointer-events: none !important;
+      }
+      #app img {
+        max-height: 40vh;
+      }
+      
+      .btn-graphene {
+        font-weight: bolder;
+        letter-spacing: 1px;
+        padding: 8px 28px;
+        border-radius: 50px;
+        transition: 0.5s;
+        margin: 10px;
+        background-color: rgba(173, 220, 203);
+        color: #000;
+        border: 2px solid #addccb;
+      }
+      
+      .btn-graphene:hover,
+      .btn-graphene:active,
+      .btn-graphene:focus {
+        background-color: rgba(173, 220, 203, 0.3);
+        border: 2px solid #addccb;
+        color: #000;
+      }
+      
+      .navbar * {
+        user-select: none !important;
+      }
+      
+      body {
+        overflow-x: hidden;
+      }
+      
+      .examples button {
+        font-size: 14px;
+      }
+      
+      .conversations {
+        margin-bottom: 200px;
+      }
+      
+      .conversation .role {
+        font-size: 14px;
+      }
+      .conversation .message {
+        border-radius: 10px;
+        padding: 2%;
+        white-space: pre-wrap;
+      }
+      
+      .bg-ai {
+        background-color: #5454541f;
+      }
+      .bg-you {
+        background-color: #a6a6a68f;
+        color: #000;
+      }
+      
+      .btn-clear{
+        color: #545454;
+        border: 1px solid #545454;
+        background-color: #fff;
+      }
+      
+      .prompt{
+        height: 50px;
+        resize: none;
+        z-index: 1;
+        min-width: 80vw;
+        padding-top: 12px;
+      }
+      
+      .send{
+        position: relative;
+        right: 60px;
+        z-index: 2;
+        transform: rotate(45deg);
+      }
+      
+      .disclaimer{
+        font-size: 12px;
+      }
+      @media screen and (min-width: 1920px) {
+        .prompt{
+           min-width: 70vw;
+        }
+      }
+      
+      @media screen and (max-width: 576px) {
+        .prompt{
+           min-width: 92vw;
+        }
+      }
+        
+        
