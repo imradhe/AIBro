@@ -3,8 +3,13 @@ controller('AIBro');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-    if ($_POST['count'] >= 5 || $_POST['tokens'] >= 2000) {
-        $data = "Daily Limit of 5 conversations or 2000 tokens exceeded. Try again after 24 hrs\n";
+    if (($_POST['count'] >= 10 || $_POST['tokens'] >= 4000) && App::getSession()) {
+        $data = "Limit exceeded. Try again after 2 hrs\n";
+        $res['status'] = '200';
+        $res['message'] = 'Limit Exceeded';
+        $res['data'] = $data;
+    }elseif(($_POST['count'] >= 3 || $_POST['tokens'] >= 800) && !App::getSession()){
+        $data = "Limit exceeded. Try again after 2 hrs\n";
         $res['status'] = '200';
         $res['message'] = 'Limit Exceeded';
         $res['data'] = $data;
@@ -13,7 +18,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $res['message'] = "Success";
         $res['data'] = AIBro::response($_POST['message']);
     }
+    if($res['message'] == "Success") {
 
+        
+        $data = ($res['data']);
+       $data = array(
+            'id' => $data[0]->id,
+            'email' => (App::getUser())? App::getUser()['email'] : '',
+            'prompt' => $_POST['message'],
+            'created' => $data[0]->created,
+            'message' => $data[0]->choices[0]->message->content,
+        );
+        DB::connect();
+        $insert = DB::insert('aibro', $data);
+        DB::close();
+    }
     http_response_code($res['status']);
     header('Content-Type: application/json');
     echo json_encode($res);
