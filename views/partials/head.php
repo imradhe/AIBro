@@ -16,8 +16,6 @@
     <meta property="og:title" content="<?php echo $config['APP_SHORT_TITLE']; ?>" />
     <meta property="og:url" content="<?php echo url(); ?>" />
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="<?php echo $config['APP_TWITTER_CREATOR']; ?>">
 
     <meta property="og:image:secure_url" itemprop="image" content="<?php echo home().$config['APP_OG_ICON']; ?>"/>
     <meta property="og:image" itemprop="image" content="<?php echo home().$config['APP_OG_ICON']; ?>"/>
@@ -27,9 +25,17 @@
     <meta property="og:description" content="<?php echo $config['APP_DESC']; ?>" />
     <meta property="og:site_name" content="<?php echo $config['APP_NAME']; ?>"/>
     
+        
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aibro.imradhe.com/">
+    <meta name="twitter:title" content="<?php echo $config['APP_SHORT_TITLE']; ?>">
+    <meta name="twitter:description" content="<?php echo $config['APP_DESC']; ?>">
+    <meta name="twitter:image" content="<?php echo home().$config['APP_OG_ICON_MOBILE']; ?>">
+
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poppins&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-
 
 
     
