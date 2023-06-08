@@ -12,9 +12,10 @@
     <div class="container">
       <div class="mt-5 logo text-center">
         <img
-          src="https://placehold.co/120"
+          src="<?php assets('img/AIBro.png');?>"
           alt="AI Bro Logo"
           class="img-fluid my-2 mt-5"
+          style="max-height: 240px"
         />
         <h4>
           Your AI Assistant for Career Guidance <br />
@@ -68,7 +69,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <h5 class="modal-title" id="announcementTitle"><img src="<?php assets("img/logo.png")?>" alt="AI Bro" class="img-fluid" style="max-height: 60px;"></h5>
+          <h5 class="modal-title" id="announcementTitle"><img src="<?php assets("img/AIBroLogo.png")?>" alt="AI Bro" class="img-fluid" style="max-height: 60px;"></h5>
           </div>
           <div class="modal-body text-center">
           <h4><b>Welcome!</b></h4>
