@@ -1,15 +1,13 @@
 
       // Variables
-      const prompt = document.querySelector("#prompt")
+      prompt = document.querySelector("#prompt")
       const clear = document.querySelector("#clear")
       const send = document.querySelector("#send")
       const conversations = document.querySelector(".conversations")
       const examples = document.querySelector(".examples")
       const allExamples = document.querySelectorAll(".examples .btn")
       const allConversations = document.querySelectorAll(".conversation")
-      let lastConversation = document.querySelector(
-        ".conversations .conversation:last-child .message"
-      )
+      let lastConversation = document.querySelector(".conversations .conversation:last-child .message")
       let myModal = new bootstrap.Modal(document.querySelector("#announcement"))
 
 
@@ -80,9 +78,7 @@
       } else examples.style.display ="none"
       
 
-      lastConversation = document.querySelector(
-        ".conversations .conversation:last-child .message"
-      )
+      lastConversation = document.querySelector(".conversations .conversation:last-child .message")
       lastConversation.scrollIntoView({ behavior: "smooth" })
         loginModal()
       
@@ -194,6 +190,8 @@
             `
         prompt.value = ""
 
+      lastConversation = document.querySelector(".conversations .conversation:last-child .message")
+      lastConversation.scrollIntoView({ behavior: "smooth" })
         disable()
 
         const response = await sendRequest(promptValue)
