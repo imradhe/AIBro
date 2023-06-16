@@ -5,6 +5,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      user-select: none;
     }
     
     .btn:focus {
@@ -63,6 +64,7 @@
       border-radius: 10px;
       padding: 2%;
       white-space: pre-wrap;
+      user-select: text;
     }
     
     .bg-ai {
@@ -85,7 +87,8 @@
       z-index: 1;
       min-width: 80vw;
       padding-top: 12px;
-      padding-right: 15% !important;
+      padding-left: 4% !important;
+      padding-right: 8% !important;
     }
     
     .send{
