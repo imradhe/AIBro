@@ -43,7 +43,7 @@
 
     <div class="footer position-fixed navbar-fixed shadow-sm bottom-0 bg-white">
 
-        <button type="button" aria-label="Clear Conversations" class="btn btn-clear btn-outline-dark btn-sm rounded-pill my-2 mx-2 fs-6" id="clear">
+        <button type="button" aria-label="Clear Conversations" class="btn btn-clear btn-outline-dark btn-sm rounded-pill mt-2 mb-4 mx-2 fs-6" id="clear">
           <i class="bi bi-eraser-fill"></i> Clear </button> 
 
         <div class="text-center d-flex mb-3">
@@ -88,48 +88,7 @@
 
     <script>
     
-    // 9. Send Request
-      async function sendRequest(promptValue){
-
-          let url = '<?php echo route('api/aibro') ?>'
-        let data = new FormData()
-        data.append('message', promptValue)
-        data.append('count', count())
-        data.append('tokens', tokenCount())
-        examples.style.display = "none"
-
-        try {
-          let response = await axios.post(url, data)
-
-          if (response.status === 200) {
-            let responseData = response.data
-
-            if (responseData.status === '200' && responseData.message === 'Success') {
-              let aiResponse = responseData.data.response.replace(/<br\s*[\/]?>/gi, '\n')
-              let id = responseData.data[0].id
-              let total_tokens = responseData.data[0].usage.total_tokens
-              let finish_reason = responseData.data[0].choices[0].finish_reason
-              let time = responseData.data[0].created
-
-              return {
-                promptValue: promptValue,
-                id: id,
-                total_tokens: total_tokens,
-                finish_reason: finish_reason,
-                time: time,
-                aiResponse: aiResponse
-              }
-
-            } else {
-              return false
-            }
-          }
-        } catch (error) {
-          console.log('Error: ' + error)
-          return false
-        }
-      }
-
+    let url = '<?php echo route('api/aibro') ?>'
 
     </script>
   </body>
