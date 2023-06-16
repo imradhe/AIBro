@@ -17,11 +17,10 @@
     <meta property="og:url" content="<?php echo url(); ?>" />
     
 
+    <meta property="og:image" content="<?php echo route($config['APP_OG_ICON']); ?>"/>
     <meta property="og:image:secure_url" itemprop="image" content="<?php echo home().$config['APP_OG_ICON']; ?>"/>
-    <meta property="og:image" itemprop="image" content="<?php echo home().$config['APP_OG_ICON']; ?>"/>
 
     <meta property="og:image:secure_url" itemprop="image" content="<?php echo home().$config['APP_OG_ICON_MOBILE']; ?>"/>
-    <meta property="og:image" itemprop="image" content="<?php echo home().$config['APP_OG_ICON_MOBILE']; ?>"/>
     <meta property="og:description" content="<?php echo $config['APP_DESC']; ?>" />
     <meta property="og:site_name" content="<?php echo $config['APP_NAME']; ?>"/>
     
