@@ -311,8 +311,6 @@ function getMsg(element) {
             `
   scroll()
   type(data[msg])
-  prompt.focus()
-  enable()
 }
 
 allExamples.forEach((example) => {
@@ -321,7 +319,7 @@ allExamples.forEach((example) => {
 
 function getCookie(cookieName) {
   const name = cookieName + "="
-  const cDecoded = decodeURIComponent(document.cookie) //to be careful
+  const cDecoded = decodeURIComponent(document.cookie)
   const cArr = cDecoded.split(" ")
   let res
   cArr.forEach((val) => {
