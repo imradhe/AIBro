@@ -7,41 +7,68 @@
       const examples = document.querySelector(".examples")
       const allExamples = document.querySelectorAll(".examples .btn")
       const allConversations = document.querySelectorAll(".conversation")
-      let lastConversation = document.querySelector(".conversations .conversation:last-child .message")
       let myModal = new bootstrap.Modal(document.querySelector("#announcement"))
 
 
+    send.classList.remove('text-success')
 
-    prompt.addEventListener("keyup", function () {
-      send.classList.toggle("text-success", prompt.value != "")
-    })
+    prompt.onkeyup = () => {
+      send.classList.toggle("text-success", prompt.value.trim() != "")
+    }
 
-    // 1. Type HTML Function 
-    function typeHTML(html, speed){
-      lastConversation = document.querySelector(
-        ".conversations .conversation:last-child .message"
-      )
-      lastConversation.innerHTML = ""
+    function scroll(){
+      let lastConversation = document.querySelector(".conversations .conversation:last-child .message")
+      return lastConversation.scrollIntoView({ behavior: "smooth" })
+    }
+
+    function enable() {
+      send.disabled = false
+      clear.disabled = false
+      prompt.disabled = false
+      send.innerHTML = '<i class="bi bi-send-fill"></i>'
+      allExamples.forEach(examples => {
+        examples.disabled = false
+      })
+      prompt.focus()
+      scroll()
+    }
+
+    
+    function disable() {
+      send.disabled = true
+      clear.disabled = true
+      prompt.disabled = true
+      send.innerHTML =
+        '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>'
+        allExamples.forEach(examples => {
+          examples.disabled = true
+        })
+    }
+
+    function type(text){
+      scroll()
+      disable()
+
+      let lastConversation = document.querySelector(".conversations .conversation:last-child .message")      
       let index = 0
       let typingInterval = setInterval(() => {
-        lastConversation.innerHTML += html[index]
+        lastConversation.innerHTML += text[index]
         index++
-        if (index >= html.length) {
+        if (index >= text.length) {
           clearInterval(typingInterval)
           enable()
         }
-      }, speed)
+      }, 10)
     }
 
-   // 2. Greetings
+    
     function greetings() {
-      disable()
       let greeting =
         "Hello! I am AI Bro, an AI chat assistant for career guidance and college counseling. \n\nHow may I help you today?"
-      typeHTML(greeting, 10)
+      type(greeting)
     }
 
-    // 3. Render
+    
     function render() {
       let getConversations = JSON.parse(localStorage.getItem("conversations")) || []
       let html = ""
@@ -72,18 +99,16 @@
             <div class="message bg-ai"></div>
           </div>
           `
-        if (greetings()){ 
-            enable()
-        }
+        greetings() 
       } else examples.style.display ="none"
       
-
-      lastConversation = document.querySelector(".conversations .conversation:last-child .message")
-      lastConversation.scrollIntoView({ behavior: "smooth" })
+        prompt.focus()
+        scroll()
         loginModal()
       
     }
-    // 4. Clear Conversations
+    
+    
     function clearConversations() {
       conversations.innerHTML = ""
       let getConversations = JSON.parse(localStorage.getItem("conversations"))
@@ -102,33 +127,13 @@
         </div>
         `
         examples.style.display ="block"
-      if (greetings()) {
-          enable()
-      }
+      greetings()
     }
 
     clear.addEventListener("click", clearConversations)
 
     
 
-    // 5. Disable
-    function disable() {
-      send.disabled = true
-      clear.disabled = true
-      send.innerHTML =
-        '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>'
-    }
-
-    // 6. Enable
-    function enable() {
-      send.disabled = false
-      clear.disabled = false
-      send.innerHTML = '<i class="bi bi-send-fill"></i>'
-      prompt.focus()
-      lastConversation.scrollIntoView({ behavior: "smooth" })
-    }
-
-    // 7. Count 
     function count() {
       let conversations = JSON.parse(localStorage.getItem("conversations")) || []
       let currentTime = new Date().getTime()
@@ -145,7 +150,7 @@
       return count
     }
 
-    // 8. Token Count
+    
     function tokenCount() {
       let conversations = JSON.parse(localStorage.getItem("conversations")) || []
       let currentTime = new Date().getTime()
@@ -161,6 +166,49 @@
 
       return count
     }
+
+
+    
+    async function sendRequest(promptValue){
+
+      let data = new FormData()
+      data.append('message', promptValue)
+      data.append('count', count())
+      data.append('tokens', tokenCount())
+      examples.style.display = "none"
+
+      try {
+        let response = await axios.post(url, data)
+
+        if (response.status === 200) {
+          let responseData = response.data
+
+          if (responseData.status === '200' && responseData.message === 'Success') {
+            let aiResponse = responseData.data.response.replace(/<br\s*[\/]?>/gi, '\n')
+            let id = responseData.data[0].id
+            let total_tokens = responseData.data[0].usage.total_tokens
+            let finish_reason = responseData.data[0].choices[0].finish_reason
+            let time = responseData.data[0].created
+
+            return {
+              promptValue: promptValue,
+              id: id,
+              total_tokens: total_tokens,
+              finish_reason: finish_reason,
+              time: time,
+              aiResponse: aiResponse
+            }
+
+          } else {
+            return false
+          }
+        }
+      } catch (error) {
+        console.log('Error: ' + error)
+        return false
+      }
+    }
+
 
     window.addEventListener("load", function () {
       render()
@@ -213,7 +261,7 @@
             response.time,
             response.aiResponse
           )
-          if (typeHTML(response.aiResponse, 10)) {
+          if (type(response.aiResponse)) {
             enable()
           }
         } else {
@@ -225,7 +273,7 @@
   `
           errorMsg =
             "Limit exceeded. Try again after 2 hrs\n"
-          if (typeHTML(errorMsg, 10)) {
+          if (type(errorMsg)) {
             enable()
           }
 
@@ -281,7 +329,7 @@
               <div class="message bg-ai"></div>
             </div>
             `
-        typeHTML(data[msg], 10)
+        type(data[msg])
         enable()
 
       }
