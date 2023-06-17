@@ -3,7 +3,7 @@ errors();
 define('OPENAI_API_KEY', $config['OPENAI_API_KEY']);
 define('MODEL_ID', 'curie'); // The base model to be fine-tuned
 
-// Fine-tune the model
+
 $apiKey = OPENAI_API_KEY;
 $modelId = MODEL_ID;
 
